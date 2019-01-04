@@ -21,8 +21,12 @@ NavigationStack{
     Connections{
       target: nativeUtils
       onCameraPickerFinished: {//displayCamerPicker被调用，用户接受，则讲照片保存在path路径,否则保存空字符串
-        if(accepted) image.source = path
-      }
+        if(accepted)
+        {
+            image.source = path
+            console.log("-------------------"+path)
+        }
+        }
     }
     }
 }

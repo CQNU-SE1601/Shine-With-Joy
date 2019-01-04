@@ -11,8 +11,8 @@ App{
 //            footerView: true;
             //可以取消注释尝试不同的导航模式
 //            navigationMode: navigationModeDrawer
-//            navigationMode: navigationModeTabs
-            navigationMode: navigationModeTabsAndDrawer
+            navigationMode: navigationModeTabs
+//            navigationMode: navigationModeTabsAndDrawer
             NavigationItem{
                 title:"主页"
                 icon:IconType.home
@@ -37,6 +37,11 @@ App{
                 title: "我的"
                 icon:IconType.minussquareo
                 Mine{}
+            }
+            NavigationItem{
+                title: "测试"
+                icon:IconType.laptop
+                New{}
             }
         }
     }

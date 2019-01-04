@@ -21,7 +21,7 @@ public:
     //Q_INVOKABLEweil为了使对象可以被元对象系统所使用
     Q_INVOKABLE void setHostPort(const QString &host, int port = 21);//设置服务器地址和端口
     Q_INVOKABLE void setUserInfo(const QString &userName, const QString &password);//设置登录FTP服务器用户名和密码
-    Q_INVOKABLE void uploadFile(const QString &fileName, const QString &path);//上传文件
+    Q_INVOKABLE void uploadFile( QString &fileName,  QString &path);//上传文件
     Q_INVOKABLE void downloadFile(const QString &path, const QString &fileName);//下载文件
 
 signals:

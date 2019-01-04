@@ -2,6 +2,8 @@
 CONFIG += v-play
 QT += network
 QT += core
+QT += multimedia
+QT += multimediawidgets
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://v-play.net/custom-code-reload-app/
 #CONFIG += v-play-live
@@ -31,7 +33,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    updatefile.cpp
+    updatefile.cpp \
+    recordervideo.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -57,7 +60,9 @@ DISTFILES += \
     qml/Concerned.qml \
     qml/AddNew.qml \
     qml/Messagement.qml \
-    qml/Mine.qml
+    qml/Mine.qml \
+    qml/New.qml
 
 HEADERS += \
-    updatefile.h
+    updatefile.h \
+    recordervideo.h

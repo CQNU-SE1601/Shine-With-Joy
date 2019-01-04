@@ -19,8 +19,14 @@ void UploadAndDownload::setUserInfo(const QString &userName, const QString &pass
     m_protecolUrl.setPassword(password);
 }
 //上传文件
-void UploadAndDownload::uploadFile(const QString &fileName,const QString &path)
+void UploadAndDownload::uploadFile( QString &fileName,QString &path)
 {
+    //测试用
+    fileName = "clip_00000001.ogg";
+    path = "/home/zhangzhe/Videos";
+
+
+
     QFile file(fileName);
     file.open(QIODevice::ReadOnly);
     QByteArray data = file.readAll();//读取本地所有文件的内容
