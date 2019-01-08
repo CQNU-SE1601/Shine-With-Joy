@@ -3,7 +3,7 @@
 #include "updatefile.h"
 #include <QQmlApplicationEngine>
 #include "recordervideo.h"
-
+#include "client.h"
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 
     // Use platform-specific fonts instead of V-Play's default font
     qmlRegisterType<UploadAndDownload>("uploadAndDownload",1,0,"UploadAndDownload");//注册元对象系统
+    qmlRegisterType<Client>("client",1,0,"Client");//客户端
     qmlRegisterType<RecorderVideo>("recordervideo",1,0,"RecorderVideo");
     vplay.setPreservePlatformFonts(true);
 

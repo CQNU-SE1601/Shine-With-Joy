@@ -1,16 +1,13 @@
 # allows to add DEPLOYMENTFOLDERS and links to the V-Play library and QtCreator auto-completion
 CONFIG += v-play
-QT += network
-QT += core
-QT += multimedia
-QT += multimediawidgets
-LIBS += -lpthread -lboost_system -lboost_thread -ljsoncpp
+QT += sql
+LIBS += -lboost_system -lboost_thread -lpthread -ljsoncpp
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://v-play.net/custom-code-reload-app/
 #CONFIG += v-play-live
 
 # configure the bundle identifier for iOS
-PRODUCT_IDENTIFIER = com.yourcompany.wizardEVAP.FunJoydemo
+PRODUCT_IDENTIFIER = com.yourcompany.wizardEVAP.SWJservice
 
 qmlFolder.source = qml
 DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
@@ -34,9 +31,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    updatefile.cpp \
-    recordervideo.cpp \
-    client.cpp
+    swjserver.cpp \
+    database.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -57,16 +53,6 @@ macx {
     ICON = macx/app_icon.icns
 }
 
-DISTFILES += \
-    qml/Home.qml \
-    qml/Concerned.qml \
-    qml/AddNew.qml \
-    qml/Messagement.qml \
-    qml/Mine.qml \
-    qml/New.qml \
-    qml/LoginPage.qml
-
 HEADERS += \
-    updatefile.h \
-    recordervideo.h \
-    client.h
+    swjserver.h \
+    database.h
