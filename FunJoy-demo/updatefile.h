@@ -33,7 +33,6 @@ private slots:
     void finishedAndWrite();//下载过程中写文件
 
 private:
-
     QFile m_file;
     QString m_path;
     QUrl m_protecolUrl;

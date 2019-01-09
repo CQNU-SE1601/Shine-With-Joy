@@ -2,6 +2,8 @@ import VPlayApps 1.0
 import QtQuick.Controls 2.2 as Quick2
 import QtQuick 2.0
 import QtMultimedia 5.0
+Item {
+    anchors.fill: parent
 NavigationStack{
     property int sourcePath: 1
     Page {
@@ -51,10 +53,11 @@ NavigationStack{
             }
         }
     }
-    MediaPlayer {
+    MediaPlayer {//也可用video，将mediaplayer和videooutput合在一起
         id: mediaplayer
         autoPlay: false
         source: "/home/zhangzhe/Videos/"+sourcePath+".mp4"
 
     }
+}
 }
