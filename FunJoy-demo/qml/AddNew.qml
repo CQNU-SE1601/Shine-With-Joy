@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import VPlayApps 1.0
 import VPlayPlugins 1.0
-import uploadAndDownload 1.0
+//import uploadAndDownload 1.0
 import QtMultimedia 5.9
 Item {
     anchors.fill: parent
@@ -12,9 +12,9 @@ Item {
         property string userPassword:"123456"   //登录服务的密码
         property bool isCameraAvailable:QtMultimedia.availableCameras.length>0  //相机权限是否可用
 //            property string videoStoreLocation:camera.outputLocation  //用于保存录制后的视频位置
-        UploadAndDownload{
-            id:uploaddownload
-        }
+//        UploadAndDownload{
+//            id:uploaddownload
+//        }
         AppButton{
             z:3
             text: "上传指定视频"
