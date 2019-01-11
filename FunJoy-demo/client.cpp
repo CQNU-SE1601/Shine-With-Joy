@@ -28,7 +28,9 @@ void Client::logining(QString name, QString password)
 {
     m_userName = name;
     m_userPassword = password;
+
     Readvideo();
+    sendaccount();
     for (int i=0;i < _namelist.size();i++)
     {
         qDebug() << _namelist.at(i)<<endl;
@@ -50,7 +52,7 @@ void Client::Readvideo()
     memset(data,0,sizeof(char)*1024);
     while(rec.length() < atoi(dataSize))
     {
-        qDebug() << "jieshou1";
+//        qDebug() << "jieshou1";
         sock.read_some(buffer(data),ec);
         qDebug() << data;
         rec.append(data,0,sizeof (data));
@@ -70,7 +72,7 @@ void Client::Readvideo()
         return;
     }else
     {
-         qDebug()<<"read3"<<resultname["name"].size();
+//         qDebug()<<"read3"<<resultname["name"].size();
          Json::Value value;
          value = resultname["name"];
          for (unsigned int i =0 ; i < resultname["name"].size();i++)
@@ -85,6 +87,30 @@ void Client::Readvideo()
 
 
     }
+
+}
+
+void Client::sendaccount()
+{
+    char data[1024];
+     memset(data,0,sizeof(char)*1024);
+      boost::system::error_code ec;
+      string account ;
+      Json::Value acc;
+      acc["name"] = m_userName.toStdString();
+      acc["password"] = m_userPassword.toStdString();
+      cout <<"send:" <<m_userName.toStdString() <<endl;
+      account = acc.toStyledString();
+      account.copy(data,account.size(),0);
+//     cout << strlen(data) << "handsize"<< headLength <<endl;
+     sock.write_some(buffer(data), ec);  //写道服务器
+     if(ec)
+     {
+         std::cout << boost::system::system_error(ec).what() << std::endl;
+     }
+     char data1[10];
+     memset(data,0,sizeof(char)*10);
+//     cout << data <<endl;
 
 }
 

@@ -42,7 +42,7 @@ void database::startconnect()
 void database::createtable()
 {
     QSqlQuery query;
-    bool success=query.exec("CREATE TABLE videopath ( ID int NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(5) NOT NULL)");
+    bool success=query.exec("CREATE TABLE account (username VARCHAR(10) NOT NULL PRIMARY, Password VARCHAR(10) NOT NULL)");
     if(success)
         qDebug()<<QObject::tr("数据库表创建成功！\n");
     else
@@ -63,13 +63,44 @@ void database::insertvideo()
     query.exec("insert into videopath values( 0,'3.mkv')");
 }
 
+bool database::verifyaccout(std::string name, std::string password)
+{
+    QSqlQuery query;
+    std::string s = "select "+name+" from account";
+    qDebug() <<QString::fromStdString(s);
+    bool success = query.exec(QString::fromStdString(s));
+    if(success)
+    {
+        qDebug()<<QObject::tr("成功！\n");
+        return true;
+    }
+    else
+    {
+        qDebug()<<QObject::tr("失败！\n");
+        s = "insert into account values('" + name +"','"+password+"')";
+         qDebug() <<QString::fromStdString(s);
+        bool su = query.exec(QString::fromStdString(s));
+        if(su)
+        {
+            qDebug()<<QObject::tr("insert account成功！\n");
+            return true;
+        }
+        else
+        {
+            qDebug()<<QObject::tr("inster account失败！\n");
+            return false;
+        }
+    }
+}
+
+
 std::vector<QString> database::selectvidio()
 {
     QSqlQuery query;
 
     query.exec( "select * from videopath");// 执行查询操作
     QSqlRecord rec = query.record();
-    qDebug() << "exec next() : ";
+//    qDebug() << "exec next() : ";
 
     while(query.next())
     // 开始就先执行一次next() 函数，那么query 指向结果集的第一条记录

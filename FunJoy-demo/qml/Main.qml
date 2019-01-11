@@ -15,8 +15,8 @@ App{
         onLoginSucceeded:{
            console.debug("client")
             client.logining(tUsername,tUserPassword)//交互C++，发送name和password
-            console.debug(client.userName)
-            console.debug(client.userPassword)
+//            console.debug(client.userName)
+//            console.debug(client.userPassword)
 
             userLoggedIn = true
         }

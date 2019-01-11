@@ -24,7 +24,8 @@ public:
     Client();
     Q_INVOKABLE void StartConnect();
     Q_INVOKABLE void logining(QString name,QString password);
-    void Readvideo();
+    void Readvideo();  //接受服务器的video消息
+    void sendaccount();
 
     //用户帐号
     QString userName();

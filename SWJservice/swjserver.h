@@ -16,6 +16,8 @@ public:
     void connect();//客户端连接
     void receciveMassage(socket_ptr sock);
     void readdata(socket_ptr &sock);
+    bool verifyaccount(string account);
+//    void writedata();
 //    void dealMessage(std::string sig,vector<string> str,socket_ptr sock);
 };
 

@@ -10,6 +10,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlRecord>
+#include <string>
 class database
 {
 public:
@@ -17,6 +18,7 @@ public:
     void startconnect();
     void createtable();
     void insertvideo();
+    bool verifyaccout(std::string name,std::string password);
     std::vector<QString> selectvidio();
     ~database(){
          dbconn.close();
