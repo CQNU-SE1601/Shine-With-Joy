@@ -81,23 +81,23 @@ Item {
             ListModel {
                 id:videoModel
                 ListElement {
-                    //                path:"rtsp://10.253.224.83/vedio/1.mkv"
-                    path:"/home/zhangzhe/Videos/1.mp4"
+                                    path:"rtsp://10.253.224.83/video/1.mkv"
+//                    path:"/home/zhangzhe/Videos/1.mp4"
 
                 }
                 ListElement {
-                    path:"/home/zhangzhe/Videos/2.mp4"
-                    //                path:"rtsp://10.253.224.83/vedio/2.mkv"
+//                    path:"/home/zhangzhe/Videos/2.mp4"
+                                    path:"rtsp://10.253.224.83/video/2.mkv"
                 }
                 ListElement {
-                    path:"/home/zhangzhe/Videos/3.mp4"
-                    //                path:"rtsp://10.253.224.83/vedio/3.mkv"
+//                    path:"/home/zhangzhe/Videos/3.mp4"
+                                    path:"rtsp://10.253.224.83/video/3.mkv"
                 }
                 ListElement{
-                    path:"/home/zhangzhe/Videos/4.mp4"
+                   path:"rtsp://10.253.224.83/video/1.mkv"
                 }
                 ListElement{
-                    path:"/home/zhangzhe/Videos/5.mp4"
+                   path:"rtsp://10.253.224.83/video/3.mkv"
                 }
             }
             MouseArea{

@@ -256,8 +256,7 @@ DIST          = ../FunJoy-demo/qml/Home.qml \
 		/opt/V-PlaySDK/V-Play/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/V-PlaySDK/V-Play/gcc_64/mkspecs/features/yacc.prf \
 		/opt/V-PlaySDK/V-Play/gcc_64/mkspecs/features/lex.prf \
-		../FunJoy-demo/FunJoy-demo.pro ../FunJoy-demo/updatefile.h \
-		../FunJoy-demo/recordervideo.h \
+		../FunJoy-demo/FunJoy-demo.pro ../FunJoy-demo/recordervideo.h \
 		../FunJoy-demo/client.h ../FunJoy-demo/main.cpp \
 		../FunJoy-demo/updatefile.cpp \
 		../FunJoy-demo/recordervideo.cpp \
@@ -685,7 +684,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/V-PlaySDK/V-Play/gcc_64/mkspecs/common/vplay/resources_user.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/V-PlaySDK/V-Play/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../FunJoy-demo/updatefile.h ../FunJoy-demo/recordervideo.h ../FunJoy-demo/client.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../FunJoy-demo/recordervideo.h ../FunJoy-demo/client.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../FunJoy-demo/main.cpp ../FunJoy-demo/updatefile.cpp ../FunJoy-demo/recordervideo.cpp ../FunJoy-demo/client.cpp ../FunJoy-demo/updatefile.cpp $(DISTDIR)/
 
 

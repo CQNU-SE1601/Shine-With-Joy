@@ -66,6 +66,6 @@ DISTFILES += \
     qml/New.qml
 
 HEADERS += \
-    updatefile.h \
+#    updatefile.h \
     recordervideo.h \
     client.h

@@ -4,7 +4,7 @@
 #include "json/json.h"
 #include <QDebug>
 io_service service;     //必有的io——service对象
-ip::tcp::endpoint ep(boost::asio::ip::address::from_string("192.168.31.99"),6688);
+ip::tcp::endpoint ep(boost::asio::ip::address::from_string("10.253.224.83"),6688);
 ip::tcp::socket sock(service);
 Client::Client()
 {
