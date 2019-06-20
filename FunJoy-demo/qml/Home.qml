@@ -2,55 +2,56 @@ import QtQuick 2.0
 import VPlayApps 1.0
 import QtMultimedia 5.9
 import QtQuick.Controls 2.2 as Quick2
+
 Item {
     anchors.fill: parent
-    property bool bMenuShown:false //侧边栏
-    NavigationStack{
+    property bool bMenuShown: false //侧边栏
+    NavigationStack {
 
         property int sourcePath: 1
-        Page{
+        Page {
             leftBarItem: IconButtonBarItem {
                 icon: IconType.search //设置
-                onClicked:{
+                onClicked: {
                     onSearchMenu()
                 }
             }
 
-            id:page1
+            id: page1
             title: "主页"
             visible: true
-            ListView{
-                id:listView
+            ListView {
+                id: listView
                 anchors.fill: parent
                 currentIndex: 0
                 cacheBuffer: 2
-                snapMode: ListView.SnapOneItem  //单张切换
-                highlightRangeMode: ListView.StrictlyEnforceRange   //currentIndex跟着变化
-                orientation:ListView.Vertical
-                header: Rectangle{
+                snapMode: ListView.SnapOneItem //单张切换
+                highlightRangeMode: ListView.StrictlyEnforceRange //currentIndex跟着变化
+                orientation: ListView.Vertical
+                header: Rectangle {
                     width: listView.width
-                    height: listView.height/3
+                    height: listView.height / 3
                     color: "white"
-                    Text{
+                    Text {
                         anchors.centerIn: parent
-                        text:"上拉刷新"
+                        text: "上拉刷新"
                     }
                 }
-                footer: Rectangle{
+                footer: Rectangle {
                     width: listView.width
-                    height: listView.height/3
+                    height: listView.height / 3
                     color: "white"
-                    Text{
+                    Text {
                         anchors.centerIn: parent
-                        text:"已经到底了"
+                        text: "已经到底了"
                     }
                 }
-                model:videoModel
-                delegate: Rectangle{
+                model: videoModel
+                delegate: Rectangle {
                     width: listView.width
                     height: listView.height
                     color: "gray"
-                    MouseArea{
+                    MouseArea {
                         anchors.fill: parent
                         onPressed: {
                             mediaplayer.pause()
@@ -58,15 +59,15 @@ Item {
                         }
                     }
                     VideoOutput {
-                        z:2
+                        z: 2
                         anchors.fill: parent
-                        source:MediaPlayer {
-                            id:mediaplayer
+                        source: MediaPlayer {
+                            id: mediaplayer
                             autoPlay: false
-                            source:path
+                            source: path
                         }
-                        AppButton{
-                            id:pauseAndPlayButton
+                        AppButton {
+                            id: pauseAndPlayButton
                             icon: IconType.play
                             anchors.centerIn: parent
                             visible: mediaplayer.status
@@ -79,29 +80,28 @@ Item {
                 }
             }
             ListModel {
-                id:videoModel
+                id: videoModel
                 ListElement {
-                                    path:"rtsp://10.253.224.83/video/1.mkv"
-//                    path:"/home/zhangzhe/Videos/1.mp4"
-
-                }
-                ListElement {
-//                    path:"/home/zhangzhe/Videos/2.mp4"
-                                    path:"rtsp://10.253.224.83/video/2.mkv"
+                    path: "rtsp://10.253.224.83/video/1.mkv"
+                    //                    path:"/home/zhangzhe/Videos/1.mp4"
                 }
                 ListElement {
-//                    path:"/home/zhangzhe/Videos/3.mp4"
-                                    path:"rtsp://10.253.224.83/video/3.mkv"
+                    //                    path:"/home/zhangzhe/Videos/2.mp4"
+                    path: "rtsp://10.253.224.83/video/2.mkv"
                 }
-                ListElement{
-                   path:"rtsp://10.253.224.83/video/1.mkv"
+                ListElement {
+                    //                    path:"/home/zhangzhe/Videos/3.mp4"
+                    path: "rtsp://10.253.224.83/video/3.mkv"
                 }
-                ListElement{
-                   path:"rtsp://10.253.224.83/video/3.mkv"
+                ListElement {
+                    path: "rtsp://10.253.224.83/video/1.mkv"
+                }
+                ListElement {
+                    path: "rtsp://10.253.224.83/video/3.mkv"
                 }
             }
-            MouseArea{
-                anchors.fill:parent
+            MouseArea {
+                anchors.fill: parent
                 enabled: bMenuShown
                 onClicked: {
                     onSearchMenu()
@@ -110,19 +110,19 @@ Item {
         }
     }
 
-    transform:Translate{
-        id:menuTranslate
-        x:0
-        Behavior on x{
-            NumberAnimation{
-                duration:400;
+    transform: Translate {
+        id: menuTranslate
+        x: 0
+        Behavior on x {
+            NumberAnimation {
+                duration: 400
                 easing.type: Easing.OutQuad
             }
         }
     }
     //打开侧边栏
-    function onSearchMenu(){
-        menuTranslate.x = bMenuShown?0:width*0.8
-        bMenuShown = !bMenuShown;
+    function onSearchMenu() {
+        menuTranslate.x = bMenuShown ? 0 : width * 0.8
+        bMenuShown = !bMenuShown
     }
 }

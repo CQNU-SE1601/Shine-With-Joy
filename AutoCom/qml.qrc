@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Media.qml</file>
+        <file>ButtonImage.qml</file>
+        <file>Images/KPlayer.png</file>
+        <file>logoicon.ico</file>
+        <file>Images/add.png</file>
+        <file>Images/back.png</file>
+        <file>Images/pass.png</file>
+        <file>Images/pause.png</file>
+        <file>Images/play.png</file>
+        <file>Images/stop.png</file>
+        <file>Images/voice.png</file>
+        <file>Images/d.png</file>
+        <file>Images/p.png</file>
+        <file>Images/z.png</file>
+        <file>Images/l.png</file>
+    </qresource>
+</RCC>
