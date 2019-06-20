@@ -2,6 +2,7 @@
 CONFIG += felgo
 QT += network
 QT += positioning
+QT += webview
 
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
@@ -64,8 +65,10 @@ macx {
 
 DISTFILES += \
     qml/LoginPage.qml \
-    qml/MapPage.qml \
-    qml/MessagePage.qml
+    qml/MessagePage.qml \
+    qml/ConversationPage.qml \
+    TimerChange.js \
+    ImageButton.qml
 
 HEADERS += \
     uploadfile.h

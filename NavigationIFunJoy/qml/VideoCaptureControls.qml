@@ -49,7 +49,6 @@ FocusScope {//创建焦点区
             }
         }
     }
-
 //    ZoomControl {
 //        x : 0
 //        y : 0

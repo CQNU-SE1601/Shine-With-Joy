@@ -3,49 +3,75 @@ import QtQuick 2.0
 
 App {
     id:app
-    onInitTheme:Theme.platform = "ios"
-    property bool loginState: true
-    LoginPage {
-        id:loginPage
-        app: app
-        z:1
-        visible: loginState
-        enabled: visible
-        Behavior on opacity { NumberAnimation { duration: 250 } } // page fade in/out
+    onInitTheme: {
+      var darkBgColor = "#161614"
+      var darkTextColor = "white"
+
+      Theme.navigationBar.backgroundColor = darkBgColor
+      Theme.navigationBar.titleColor = darkTextColor
+      Theme.navigationBar.itemColor = darkTextColor
+
+      Theme.tabBar.backgroundColor = darkBgColor
+      Theme.tabBar.titleColor = darkTextColor
+
+      Theme.colors.secondaryBackgroundColor = "#EFEFF4"
+
+      Theme.colors.statusBarStyle = Theme.colors.statusBarStyleWhite
+      Theme.platform = "ios"
     }
-    Navigation{
-        navigationMode: navigationModeTabs
-        NavigationItem{
-            title:"主页"
-            icon:IconType.home
-            HomePage{}
+    property bool loginState: loginPage.visible
+    Page{
+        useSafeArea: false;//界面充满窗口
+        LoginPage {
+            id:loginPage
+            app: app
+            z:1
+            visible: true
+            enabled: visible
+            Behavior on opacity { NumberAnimation { duration: 250 } } // page fade in/out
         }
-        NavigationItem{
-            title: "发布"
-            icon:IconType.adn
-            AddPage{}
-        }
-        NavigationItem{
-            title: "我的"
-            icon:IconType.minussquareo
-            MinePage{
-                app: app
+        Navigation{
+            id:navigation
+            navigationMode: navigationModeTabs
+
+            NavigationItem{
+                title:"主页"
+                icon:IconType.home
+                HomePage{}
+                onSelected: {
+                    console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.focus)
+                }
             }
-        }
-        NavigationItem{
-            title: qsTr("消息")
-            MessagePage{
-
+            NavigationItem{
+                title: "发布"
+                icon:IconType.adn
+                AddPage{
+                    //使得当页面切出去关闭camera
+                    cameraAvailablity: navigation.currentIndex == 1?2:0
+                }
+                onSelected: {
+                    console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
+                }
             }
-        }
-
-        NavigationItem{
-            title: qsTr("附近")
-            icon: IconType.mapmarker;
-            MapPage{
-
+            NavigationItem{
+                title: "我的"
+                icon:IconType.minussquareo
+                MinePage{
+                    app: app
+                }
+                onSelected: {
+                    console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
+                }
+            }
+            NavigationItem{
+                title: qsTr("消息")
+                icon: IconType.clocko
+                MessagePage{
+                }
+                onSelected: {
+                    console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
+                }
             }
         }
     }
-
 }

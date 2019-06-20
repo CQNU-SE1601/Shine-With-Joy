@@ -3,6 +3,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
 Page {
+    property alias loginState:loginPage.visible
     id: loginPage
     backgroundColor: Qt.rgba(0,0,0, 0.75) // page background is translucent, we can see other items beneath the page
     useSafeArea: false // do not consider safe area insets of screen
