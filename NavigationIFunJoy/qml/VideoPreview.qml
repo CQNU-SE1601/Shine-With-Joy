@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtMultimedia 5.0
+import QtMultimedia 5.10
 import QtQuick.Controls 2.5
 import Felgo 3.0
 Item {

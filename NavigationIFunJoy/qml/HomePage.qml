@@ -105,7 +105,7 @@ NavigationStack {
                             height: dp(30)
                             visible: true
                             property bool status: true //默认播放
-                            imageBackground: "../assets/2.jpg"
+                            imageBackground: "../assets/icon/play.png"
                             onBtnClicked: {
                                 if (status) {
                                     player.pause()
@@ -131,16 +131,16 @@ NavigationStack {
                 ListModel {
                     id: videoModel
                     ListElement {
-                        path: "file:/root/videolists/ab.mp4"
+                        path: "https://static2.xiaoniangao.cn/album_tpl/xngVideo1.mp4"
                     }
                     ListElement {
-                        path: "file:/root/videolists/abc.mp4"
+                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/HorizontalVideo2.mp4"
                     }
                     ListElement {
-                        path: "file:/root/videolists/a.mp4"
+                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo1.mp4"
                     }
                     ListElement {
-                        path: "file:/root/videolists/abc.mp4"
+                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo3.mp4"
                     }
                 }
 

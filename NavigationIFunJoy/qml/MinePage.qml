@@ -11,27 +11,33 @@ NavigationStack{
         Column{
             spacing: dp(10)
             anchors.fill: parent;
-            RoundedImage {
-                anchors.horizontalCenter: parent.horizontalCenter
+            UserImage {
                 id: userImage
+                anchors.horizontalCenter: parent.horizontalCenter
                 property string iconFontName: Theme.iconFont.name
                 width: dp(72)
                 height: width
+
+                placeholderImage: "\uf007" // user
                 source: "../assets/icon/girl.png"
+
+                editable: true
+                editBackgroundColor: Theme.tintColor
+
                 property bool shownEditPhotoDialog: false
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if (system.desktopPlatform) {
-                            nativeUtils.displayImagePicker(qsTr("Choose Image"))
-                        }
-                        else {
-                            //是否用QML更好
-                            shownEditPhotoDialog = true
-                            nativeUtils.displayAlertSheet("", ["本地图片", "拍照","查看大图"], true)
-                        }
+
+                onEditClicked: {
+                    // We do not have camera feature on desktop yet, so just show file dialog
+                    if (system.desktopPlatform) {
+                        nativeUtils.displayImagePicker(qsTr("选择图片"))
+                    }
+                    else {
+                        // Probably better use a QML styled dialog?
+                        shownEditPhotoDialog = true
+                        nativeUtils.displayAlertSheet("", ["本地图片", "拍照", "查看大图"], true)
                     }
                 }
+
             } //用户头像
             AppListView {
                 model: [
@@ -94,13 +100,25 @@ NavigationStack{
         onAlertSheetFinished: {
             if (userImage.shownEditPhotoDialog) {
                 if (index == 0)
-                    nativeUtils.displayImagePicker(qsTr("本地图片"))
+                    nativeUtils.displayImagePicker(qsTr("选择图片")) // Choose image
                 else if (index == 1)
-                    nativeUtils.displayCameraPicker("拍照")
-                else if(index == 2)
+                    nativeUtils.displayCameraPicker("拍照") // Take from Camera
+                else if (index == 2)
                     PictureViewer.show(getApplication(), userImage.source)
                 userImage.shownEditPhotoDialog = false
             }
+        }
+
+        onImagePickerFinished: {
+            console.debug("图片拾取结束，在：", path)
+            if(accepted)
+                userImage.source = Qt.resolvedUrl(path)
+        }
+
+        onCameraPickerFinished: {
+            console.debug("照片拍照结束，位置在:", path)
+            if(accepted)
+                userImage.source = Qt.resolvedUrl(path)
         }
         onAlertDialogFinished:{
             if(accepted){
@@ -109,17 +127,6 @@ NavigationStack{
             }else{
                 //关闭当前警告框
             }
-        }
-
-        onImagePickerFinished: {
-            console.debug("图片拾取结束，路径在：", path)
-            if(accepted)
-                userImage.source = Qt.resolvedUrl(path)
-        }
-        onCameraPickerFinished: {
-            console.debug("拍照完成，路径在：", path)
-            if(accepted)
-                userImage.source = Qt.resolvedUrl(path)
         }
     }
     /*----------------------------------------下面是切换颜色-----------------------------*/
@@ -197,5 +204,4 @@ NavigationStack{
             }
         }
     }
-
 }

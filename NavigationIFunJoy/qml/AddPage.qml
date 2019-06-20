@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import Felgo 3.0
 import QtMultimedia 5.12
 NavigationStack{
@@ -50,6 +50,7 @@ NavigationStack{
             Camera {
                 id: camera
                 captureMode: Camera.CaptureVideos
+                digitalZoom: pinch.scale
                 videoRecorder {//视频记录
                     id:videoRecorder
                     resolution: "640x480"
@@ -80,20 +81,24 @@ NavigationStack{
                 anchors.fill: parent
                 source: camera
                 autoOrientation: true
+                PinchHandler{//双指捏合
+                    id:pinch
+                    target: null
+                }
+
                 MouseArea{//自动对焦
                     id:maFocus
                     anchors.fill: parent;
                     onClicked: {
                         camera.searchAndLock();
+                        imageFocus.x = mouse.x-imageFocus.width/2
+                        imageFocus.y = mouse.y-imageFocus.height/2
                         imageFocus.visible = !imageFocus.visible
                         animation.start()
                     }
                 }
                 Image {
                     id: imageFocus
-//                    x:MouseArea.mouseX+width
-//                    y:MouseArea.mouseY+height
-                    anchors.centerIn: parent
                     source: "../assets/icon/circle.png"
                     visible: false
                     NumberAnimation on scale {

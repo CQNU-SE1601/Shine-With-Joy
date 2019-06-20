@@ -6,16 +6,13 @@ App {
     onInitTheme: {
       var darkBgColor = "#161614"
       var darkTextColor = "white"
-
       Theme.navigationBar.backgroundColor = darkBgColor
       Theme.navigationBar.titleColor = darkTextColor
       Theme.navigationBar.itemColor = darkTextColor
 
       Theme.tabBar.backgroundColor = darkBgColor
       Theme.tabBar.titleColor = darkTextColor
-
       Theme.colors.secondaryBackgroundColor = "#EFEFF4"
-
       Theme.colors.statusBarStyle = Theme.colors.statusBarStyleWhite
       Theme.platform = "ios"
     }
@@ -56,9 +53,7 @@ App {
             NavigationItem{
                 title: "我的"
                 icon:IconType.minussquareo
-                MinePage{
-                    app: app
-                }
+                MinePage{app: app}
                 onSelected: {
                     console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
                 }
@@ -66,8 +61,7 @@ App {
             NavigationItem{
                 title: qsTr("消息")
                 icon: IconType.clocko
-                MessagePage{
-                }
+                MessagePage{}
                 onSelected: {
                     console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
                 }
