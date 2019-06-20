@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.1
 
 Page {
     property alias loginState:loginPage.visible
+    property  alias tUsername:  txtUsername.text
+    property  alias tUserPassword:  txtPassword.text
     id: loginPage
     backgroundColor: Qt.rgba(0,0,0, 0.75) // page background is translucent, we can see other items beneath the page
     useSafeArea: false // do not consider safe area insets of screen
@@ -79,6 +81,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     loginPage.forceActiveFocus() //将焦点移开文本域
+                     client.myLogin(tUsername,tUserPassword)
                     app.settings.setValue("userID", txtUsername.text)//写入
                     app.settings.setValue("userPSW",txtPassword.text)
                     loginPage.visible = false

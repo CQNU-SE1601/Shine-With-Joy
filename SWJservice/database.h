@@ -11,22 +11,24 @@
 #include <QDebug>
 #include <QSqlRecord>
 #include <string>
-class database
-{
-public:
-    database();
-    void startconnect();
-    void createtable();
-    void insertvideo();
-    bool verifyaccout(std::string name,std::string password);
-    std::vector<QString> selectvidio();
-    ~database(){
-         dbconn.close();
-    }
-//    std::vector<QString> setnamelist();
-private:
-    QSqlDatabase dbconn;
-    std::vector<QString> namelist;
-};
+//class database
+//{
+//public:
+//    database();
+
+//    void createtable();
+//    void startconnect();
+//    void insertvideo();
+//    bool verifyaccout(std::string name,std::string password);
+//    std::vector<QString> selectvidio();
+//    ~database(){
+//         dbconn.close();
+//    }
+////    std::vector<QString> setnamelist();
+//private:
+//    QSqlDatabase dbconn;
+
+//};
+
 
 #endif // DATABASE_H

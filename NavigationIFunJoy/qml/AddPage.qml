@@ -1,6 +1,6 @@
-import QtQuick 2.12
+import QtQuick 2.9
 import Felgo 3.0
-import QtMultimedia 5.12
+import QtMultimedia 5.9
 NavigationStack{
     property int initTime:1
     property bool timerVisible:false
@@ -81,10 +81,10 @@ NavigationStack{
                 anchors.fill: parent
                 source: camera
                 autoOrientation: true
-                PinchHandler{//双指捏合
-                    id:pinch
-                    target: null
-                }
+//                PinchHandler{//双指捏合
+//                    id:pinch
+//                    target: null
+//                }
 
                 MouseArea{//自动对焦
                     id:maFocus

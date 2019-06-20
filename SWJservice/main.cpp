@@ -3,11 +3,15 @@
 #include <VPApplication>
 
 #include <QQmlApplicationEngine>
-#include <swjserver.h>
-
+#include "joyserver.h"
+#include "audiencebroker.h"
 int main(int argc, char *argv[])
 {
 
-    Server service;
-    service.connect();
+    JoyServer joyserver;
+    joyserver.connect();
+//    cout << "jaing"<<endl;
+     auto a = AudienceBroker::getInstance();
+      a->findUserInDataBase("jiang");
+
 }

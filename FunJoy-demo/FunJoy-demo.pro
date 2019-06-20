@@ -36,7 +36,11 @@ SOURCES += main.cpp \
     updatefile.cpp \
     recordervideo.cpp \
     client.cpp \
-    updatefile.cpp
+    updatefile.cpp \
+    videolist.cpp \
+    video.cpp \
+    joyclient.cpp \
+    audience.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -68,4 +72,8 @@ DISTFILES += \
 HEADERS += \
 #    updatefile.h \
     recordervideo.h \
-    client.h
+    client.h \
+    videolist.h \
+    video.h \
+    joyclient.h \
+    audience.h

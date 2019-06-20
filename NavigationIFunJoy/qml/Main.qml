@@ -1,6 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
-
+import client 1.0
 App {
     id:app
     onInitTheme: {
@@ -25,7 +25,11 @@ App {
             z:1
             visible: true
             enabled: visible
+
             Behavior on opacity { NumberAnimation { duration: 250 } } // page fade in/out
+        }
+        Client{
+            id:client
         }
         Navigation{
             id:navigation

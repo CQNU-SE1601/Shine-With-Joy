@@ -32,7 +32,19 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     swjserver.cpp \
-    database.cpp
+    database.cpp \
+    joyserver.cpp \
+    audience.cpp \
+    audiencebroker.cpp \
+    audienceproxy.cpp \
+    video.cpp \
+    videolist.cpp \
+    videobroker.cpp \
+    videolistbroker.cpp \
+    videolistproxy.cpp \
+    videoproxy.cpp \
+    user.cpp \
+    command.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -55,4 +67,17 @@ macx {
 
 HEADERS += \
     swjserver.h \
-    database.h
+    database.h \
+    joyserver.h \
+    audience.h \
+    audiencebroker.h \
+    audienceproxy.h \
+    video.h \
+    videolist.h \
+    videobroker.h \
+    videolistbroker.h \
+    videolistproxy.h \
+    videoproxy.h \
+    user.h \
+    syssignal.h \
+    command.h

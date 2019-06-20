@@ -1,12 +1,14 @@
 import QtQuick 2.0
-import QtMultimedia 5.12
+import QtMultimedia 5.9
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.2
 import Felgo 3.0
 
 NavigationStack {
+    property int number: 1
     anchors.fill: parent
     Page {
+
         id: pageHome
         title: "主页"
         visible: true
@@ -124,7 +126,14 @@ NavigationStack {
                     }
                 }
                 onCurrentIndexChanged: {
+                    if(videoModel.count==listView.currentIndex+1)
+                    {
+                    var a = client.getVideoSrc(1)
+                    console.log(a)
+                        videoModel.append({"path":a})
+                    }
                     //                    videoModel.get(listView.currentIndex - 1).//                    if (listView.currentIndex == videoModel.count-1)
+
                     //                        videoModel.append()
                     console.log("changed")
                 }
