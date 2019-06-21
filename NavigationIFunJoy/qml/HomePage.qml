@@ -4,8 +4,8 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.2
 import Felgo 3.0
 NavigationStack {
-    property alias mediaPlayerState:player.playbackState
     anchors.fill: parent
+    property int currentIndex
     Page {
         id: pageHome
         title: "主页"
@@ -16,11 +16,12 @@ NavigationStack {
             id: page1
             anchors.fill: parent
 
-            ListView {
+            AppListView {
                 id: listView
                 anchors.fill: parent
                 currentIndex: 0
                 cacheBuffer: 2
+                scrollIndicatorVisible: false
                 snapMode: ListView.SnapOneItem //单张切换
                 highlightRangeMode: ListView.StrictlyEnforceRange //currentIndex跟着变化
                 orientation: ListView.Vertical
@@ -39,7 +40,6 @@ NavigationStack {
                     height: listView.height
                     MediaPlayer {
                         id: player
-                        autoPlay: autoPlay
                         loops: MediaPlayer.Infinite
                         source: path
                     }
@@ -49,6 +49,7 @@ NavigationStack {
                         source: player
                         Slider {
                             id: playPos
+                            z:3
                             anchors.bottom: parent.bottom
                             width: pageHome.width
                             height: dp(10)
@@ -93,32 +94,27 @@ NavigationStack {
                         MouseArea {
                             anchors.fill: parent
                             onPressed: {
+                                switchs.state = false
                                 player.pause()
-                                switchs.status = 0
-                                switchs.visible = true
-                                switchs.imageBackground = "../assets/icon/play.png"
                             }
                         }
                         ImageButton {
                             id: switchs
                             anchors.centerIn: parent
+                            property bool state:false
                             width: dp(30)
                             height: dp(30)
-                            visible: true
-                            property bool status: true //默认播放
+                            visible: !state
                             imageBackground: "../assets/icon/play.png"
                             onBtnClicked: {
-                                if (status) {
+                                if (state) {
+                                    console.log("播放")
+                                    state = false
                                     player.pause()
-                                    console.log("start")
-                                    status = 0
-                                    imageBackground = "../assets/icon/play.png"
                                 } else {
+                                    console.log("你好")
+                                    state = true
                                     player.play()
-                                    console.log("pause")
-                                    status = 1
-                                    visible = false
-                                    imageBackground = "../assets/icon/pause.png"
                                 }
                             }
                         }

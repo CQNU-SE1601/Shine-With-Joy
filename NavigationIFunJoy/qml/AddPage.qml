@@ -168,17 +168,6 @@ NavigationStack{
                     }
                 }
             }
-            ZoomControl{
-                anchors.left: parent.left
-                anchors.leftMargin: dp(10)
-                z:3
-                width: dp(10)
-                height: parent.height
-                currentZoom: camera.digitalZoom
-                maximumZoom: Math.min(4.0,camera.maximumDigitalZoom)
-                onZoomTo: camera.setDigitalZoom(value)
-            }
-
         }
     }
 }

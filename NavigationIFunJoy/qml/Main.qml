@@ -38,7 +38,7 @@ App {
             NavigationItem{
                 title:"主页"
                 icon:IconType.home
-                HomePage{/*mediaPlayerState:navigation.currentIndex == 0?1:0*/}
+                HomePage{}
                 onSelected: {
                     console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.focus)
                 }

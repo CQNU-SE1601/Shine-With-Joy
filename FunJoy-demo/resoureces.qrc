@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>VideosExamples/1.mp4</file>
-        <file>VideosExamples/2.mp4</file>
-        <file>VideosExamples/3.mp4</file>
-        <file>VideosExamples/4.mp4</file>
-        <file>VideosExamples/5.mp4</file>
-    </qresource>
-</RCC>
