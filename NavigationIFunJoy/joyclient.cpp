@@ -21,7 +21,7 @@ void JoyClient::startconnect()
      tcpClient = new QTcpSocket(this);
      //connect(tcpClient,)
      tcpClient->abort();
-     tcpClient->connectToHost("192.168.31.99",2001);
+     tcpClient->connectToHost(m_hostName,m_port);
      connect(tcpClient, &QTcpSocket::readyRead, this, &JoyClient::ReadInformation);
      qDebug() << "连接";
 }
@@ -39,7 +39,6 @@ void JoyClient::myLogin(QString username, QString userpw)
     QString json_str(byte_array);
     qDebug() << json_str;
     tcpClient->write(byte_array);
-
 }
 
 void JoyClient::myRegister(QString username, QString userpw)
@@ -135,10 +134,30 @@ void JoyClient::ReadInformation()
 
 }
 
-QString JoyClient::getVideoSrc(int i) const
+quint16 JoyClient::getPort() const
+{
+    return m_port;
+}
+
+void JoyClient::setPort(quint16 port)
+{
+    m_port = port;
+}
+
+QString JoyClient::getHostName() const
+{
+    return m_hostName;
+}
+
+void JoyClient::setHostName(const QString &hostName)
+{
+    m_hostName = hostName;
+}
+
+QString JoyClient::getVideoSrc(int i)
 {
 
-    return m_videoSrc;
+    return "http://"+m_hostName+":8080/"+m_videoSrc;
 }
 
 VideoList JoyClient::vlist() const
@@ -150,7 +169,6 @@ void JoyClient::setVlist(const VideoList &vlist)
 {
     m_vlist = vlist;
 }
-
 //std::map<int, std::shared_ptr<Video> > JoyClient::videolist() const
 //{
 //    return m_videolist;

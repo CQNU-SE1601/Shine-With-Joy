@@ -3,12 +3,10 @@ import QtMultimedia 5.9
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.2
 import Felgo 3.0
-
 NavigationStack {
-    property int number: 1
+    property alias mediaPlayerState:player.playbackState
     anchors.fill: parent
     Page {
-
         id: pageHome
         title: "主页"
         visible: true
@@ -32,25 +30,26 @@ NavigationStack {
                     color: "white"
                     Text {
                         anchors.centerIn: parent
-                        text: "song shou shua xin"
+                        text: "松手即可刷新"
                     }
                 }
                 model: videoModel
                 delegate: Rectangle {
                     width: listView.width
                     height: listView.height
+                    MediaPlayer {
+                        id: player
+                        autoPlay: autoPlay
+                        loops: MediaPlayer.Infinite
+                        source: path
+                    }
                     VideoOutput {
                         z: 2
                         anchors.fill: parent
-                        source: MediaPlayer {
-                            id: player
-                            autoPlay: autoPlay
-                            source: path
-                        }
+                        source: player
                         Slider {
                             id: playPos
                             anchors.bottom: parent.bottom
-                            //anchors.bottomMargin: dp(20)
                             width: pageHome.width
                             height: dp(10)
                             maximumValue: player.duration
@@ -128,25 +127,16 @@ NavigationStack {
                 onCurrentIndexChanged: {
                     if(videoModel.count==listView.currentIndex+1)
                     {
-                    var a = client.getVideoSrc(1)
-                    console.log(a)
+                        var a = client.getVideoSrc(1)
+                        console.log(a)
                         videoModel.append({"path":a})
                     }
-                    //                    videoModel.get(listView.currentIndex - 1).//                    if (listView.currentIndex == videoModel.count-1)
-
-                    //                        videoModel.append()
                     console.log("changed")
                 }
                 ListModel {
                     id: videoModel
                     ListElement {
-                        path: "https://static2.xiaoniangao.cn/album_tpl/xngVideo1.mp4"
-                    }
-                    ListElement {
                         path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/HorizontalVideo2.mp4"
-                    }
-                    ListElement {
-                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo1.mp4"
                     }
                     ListElement {
                         path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo3.mp4"

@@ -1,4 +1,4 @@
-import QtQuick 2.9
+import QtQuick 2.12
 import Felgo 3.0
 import QtMultimedia 5.9
 NavigationStack{
@@ -50,7 +50,7 @@ NavigationStack{
             Camera {
                 id: camera
                 captureMode: Camera.CaptureVideos
-                digitalZoom: pinch.scale
+                digitalZoom: Math.round(pinch.scale)
                 videoRecorder {//视频记录
                     id:videoRecorder
                     resolution: "640x480"
@@ -81,10 +81,10 @@ NavigationStack{
                 anchors.fill: parent
                 source: camera
                 autoOrientation: true
-//                PinchHandler{//双指捏合
-//                    id:pinch
-//                    target: null
-//                }
+                PinchHandler{//双指捏合
+                    id:pinch
+                    target: null
+                }
 
                 MouseArea{//自动对焦
                     id:maFocus

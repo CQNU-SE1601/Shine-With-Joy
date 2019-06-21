@@ -38,7 +38,7 @@ App {
             NavigationItem{
                 title:"主页"
                 icon:IconType.home
-                HomePage{}
+                HomePage{/*mediaPlayerState:navigation.currentIndex == 0?1:0*/}
                 onSelected: {
                     console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.focus)
                 }
@@ -49,9 +49,6 @@ App {
                 AddPage{
                     //使得当页面切出去关闭camera
                     cameraAvailablity: navigation.currentIndex == 1?2:0
-                }
-                onSelected: {
-                    console.log(navigation.currentIndex+"     "+navigation.currentNavigationItem+"  "+navigation.activeFocus)
                 }
             }
             NavigationItem{
