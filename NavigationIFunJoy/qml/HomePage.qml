@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.2
 import Felgo 3.0
 NavigationStack {
     anchors.fill: parent
-    property int currentIndex
+    property int currentIndex:1
     Page {
         id: pageHome
         title: "主页"
@@ -108,11 +108,9 @@ NavigationStack {
                             imageBackground: "../assets/icon/play.png"
                             onBtnClicked: {
                                 if (state) {
-                                    console.log("播放")
                                     state = false
                                     player.pause()
                                 } else {
-                                    console.log("你好")
                                     state = true
                                     player.play()
                                 }
@@ -120,12 +118,15 @@ NavigationStack {
                         }
                     }
                 }
+                property int total:1
                 onCurrentIndexChanged: {
-                    if(videoModel.count==listView.currentIndex+1)
+                    if((videoModel.count==(listView.currentIndex+1)) && total != 7 )
                     {
-                        var a = client.getVideoSrc(1)
+                        var a = client.getVideoSrc(currentIndex)
+                        console.log("视频模型数量"+videoModel.count+"当前序列"+listView.currentIndex)
                         console.log(a)
                         videoModel.append({"path":a})
+                        total++
                     }
                     console.log("changed")
                 }
@@ -159,7 +160,6 @@ NavigationStack {
                     Msg {
                         id: modelwnd
                     }
-
                     ImageButton {
                         width: dp(50)
                         height: dp(35)

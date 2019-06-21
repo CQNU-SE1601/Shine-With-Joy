@@ -156,7 +156,9 @@ void JoyClient::setHostName(const QString &hostName)
 
 QString JoyClient::getVideoSrc(int i)
 {
-
+    std::cout << "接收成功++++++++++++__________+========"<<m_videolist[i]->videoSrc()<<std::endl;
+    QString q = QString::fromStdString(m_videolist[i]->videoSrc());
+    setVideoSrc(q);
     return "http://"+m_hostName+":8080/"+m_videoSrc;
 }
 
