@@ -72,7 +72,8 @@ DISTFILES += \
     qml/MessagePage.qml \
     qml/ConversationPage.qml \
     TimerChange.js \
-    ImageButton.qml
+    ImageButton.qml \
+    qml/MySocialView.qml
 
 HEADERS += \
     uploadfile.h \

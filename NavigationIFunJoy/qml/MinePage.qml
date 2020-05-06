@@ -11,34 +11,6 @@ NavigationStack{
         Column{
             spacing: dp(10)
             anchors.fill: parent;
-            UserImage {
-                id: userImage
-                anchors.horizontalCenter: parent.horizontalCenter
-                property string iconFontName: Theme.iconFont.name
-                width: dp(72)
-                height: width
-
-                placeholderImage: "\uf007" // user
-                source: "../assets/icon/girl.png"
-
-                editable: true
-                editBackgroundColor: Theme.tintColor
-
-                property bool shownEditPhotoDialog: false
-
-                onEditClicked: {
-                    // We do not have camera feature on desktop yet, so just show file dialog
-                    if (system.desktopPlatform) {
-                        nativeUtils.displayImagePicker(qsTr("选择图片"))
-                    }
-                    else {
-                        // Probably better use a QML styled dialog?
-                        shownEditPhotoDialog = true
-                        nativeUtils.displayAlertSheet("", ["本地图片", "拍照", "查看大图"], true)
-                    }
-                }
-
-            } //用户头像
             AppListView {
                 model: [
                     {
@@ -94,41 +66,7 @@ NavigationStack{
             }
         }
     }
-    /*----------------------------------------对本机各种响应------------------------------*/
-    Connections {
-        target: nativeUtils
-        onAlertSheetFinished: {
-            if (userImage.shownEditPhotoDialog) {
-                if (index == 0)
-                    nativeUtils.displayImagePicker(qsTr("选择图片")) // Choose image
-                else if (index == 1)
-                    nativeUtils.displayCameraPicker("拍照") // Take from Camera
-                else if (index == 2)
-                    PictureViewer.show(getApplication(), userImage.source)
-                userImage.shownEditPhotoDialog = false
-            }
-        }
 
-        onImagePickerFinished: {
-            console.debug("图片拾取结束，在：", path)
-            if(accepted)
-                userImage.source = Qt.resolvedUrl(path)
-        }
-
-        onCameraPickerFinished: {
-            console.debug("照片拍照结束，位置在:", path)
-            if(accepted)
-                userImage.source = Qt.resolvedUrl(path)
-        }
-        onAlertDialogFinished:{
-            if(accepted){
-                console.log("退出")
-                //返回到登录
-            }else{
-                //关闭当前警告框
-            }
-        }
-    }
     /*----------------------------------------下面是切换颜色-----------------------------*/
     Component {
         id: pageSwitchColor
@@ -152,9 +90,9 @@ NavigationStack{
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                Theme.colors.tintColor =  color;
+                                Theme.tintColor =  color;
                                 tintColorRow.currentIndex = index
-                                //                                app.settings.setValue("themeColor",color)//保存主题颜色到系统
+                                app.settings.setValue("themeColor",color)//保存主题颜色到系统
                             }
                         }
                     }

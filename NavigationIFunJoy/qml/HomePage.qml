@@ -15,7 +15,6 @@ NavigationStack {
         Rectangle {
             id: page1
             anchors.fill: parent
-
             AppListView {
                 id: listView
                 anchors.fill: parent
@@ -118,9 +117,9 @@ NavigationStack {
                         }
                     }
                 }
-                property int total:1
+                property int total:videoModel.count
                 onCurrentIndexChanged: {
-                    if((videoModel.count==(listView.currentIndex+1)) && total != 7 )
+                    if((videoModel.count==(listView.currentIndex+1)) /*&& total != 7 */)
                     {
                         var a = client.getVideoSrc(currentIndex)
                         console.log("视频模型数量"+videoModel.count+"当前序列"+listView.currentIndex)
@@ -133,10 +132,29 @@ NavigationStack {
                 ListModel {
                     id: videoModel
                     ListElement {
-                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/HorizontalVideo2.mp4"
+                        path: "https://static2.xiaoniangao.cn/album_tpl/xngVideo1.mp4"
                     }
                     ListElement {
-                        path: "https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo3.mp4"
+                        path: "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff20000bqnnaa49hq5ksnrks4kg&ratio=720p&line=0"
+                    }
+                    ListElement{
+                        path:"https://kol-fans.fp.ps.netease.com/file/5e7acd1c143cfa903f353960BYGRso5502"
+                    }
+
+                    ListElement{
+                        path:"https://static2.xiaoniangao.cn/web/xng-pc/img/home/VerticalVideo4.mp4"
+                    }
+                    ListElement{
+                        path:"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff20000bqnbavg9lr7a1ct3hpag&ratio=720p&line=0"
+                    }
+                    ListElement{
+                        path:"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200f670000bqlslqtds133rheabni0&ratio=720p&line=0"
+                    }
+                    ListElement{
+                        path:"https://sky.res.netease.com/2019/0515/3.mp4"
+                    }
+                    ListElement{
+                        path:"https://flv2.bn.netease.com/da4cfaf101511768833d46f5b2da99bd71ad6f63dca5094c7b2640d828bb93fcfa530c484f36f47b801a1f42c0ab603ed0fe343f02a86f133537a677ab62880268afa961bf6de3eedeec48e0a789c15f38068da765bac39d081230f5156f5c48fba5abac3a2db7d1470135a5577008400e187c98000ff43a.mp4"
                     }
                 }
 
@@ -149,7 +167,7 @@ NavigationStack {
                         id: dian
                         property bool isLiked: false
                         width: dp(50)
-                        height: dp(35)
+                        height: dp(25)
                         imageBackground: "../assets/icon/d.png"
                         onBtnClicked: {
                             imageBackground

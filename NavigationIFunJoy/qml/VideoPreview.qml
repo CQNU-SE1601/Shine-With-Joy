@@ -42,6 +42,7 @@ Item {
             anchors.bottomMargin:dp(20)
             imageBackground: "../assets/icon/ok.png"
             onBtnClicked: {
+                console.log("convert to the internet")
 
             }
         }

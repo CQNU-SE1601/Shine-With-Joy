@@ -120,9 +120,9 @@ NavigationStack{
                 ImageButton{//切换摄像头
                     property bool isBackCamera:true
                     anchors.right: parent.right
-                    anchors.rightMargin: dp(20)
+                    anchors.rightMargin: dp(50)
                     anchors.top: parent.top
-                    anchors.topMargin: dp(20)
+                    anchors.topMargin: dp(50)
                     id:btnSwitch
                     imageBackground: "../assets/icon/switch.png"
                     onBtnClicked: {
